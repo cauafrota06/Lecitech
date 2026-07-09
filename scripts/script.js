@@ -1,76 +1,58 @@
+// 1. Importações do Firebase (SDK Modular)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-// 2. Suas configurações exatas do Firebase
+// 2. Configuração do seu Banco de Dados (Firebase Lecitech)
 const firebaseConfig = {
-    apiKey: "AIzaSyD5O7yI1k5nIKAHit-xNEglMfbvyU-mwjo",
-    authDomain: "lecitech-c0846.firebaseapp.com",
-    projectId: "lecitech-c0846",
-    storageBucket: "lecitech-c0846.firebasestorage.app",
-    messagingSenderId: "160358322782",
-    appId: "1:160358322782:web:cd3c3890dab446205fdacf"
+    apiKey: "AIzaSyD507yI1k5nIKAHit-xNEglMfbvyU-mwjo",
+    databaseURL: "https://lecitech-c0846-default-rtdb.firebaseio.com/",
+    projectId: "lecitech-c0846"
 };
 
-// 3. Inicializando o Firebase
+// 3. Inicialização do Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-// 4. Apontando exatamente para a pasta "estacao" que você criou
+// ---------------------------------------------------------
+// 4. Função do Relógio Local (Data e Hora)
+// ---------------------------------------------------------
+function atualizarRelogio() {
+    const agora = new Date();
+    
+    // Formata a data (ex: quinta-feira, 9 de julho de 2026)
+    const opcoesData = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dataFormatada = agora.toLocaleDateString('pt-BR', opcoesData);
+    
+    // Formata a hora (ex: 10:52:35)
+    const horaFormatada = agora.toLocaleTimeString('pt-BR');
+
+    if (document.getElementById('hora')) {
+        document.getElementById('hora').textContent = horaFormatada;
+    }
+    if (document.getElementById('data')) {
+        document.getElementById('data').textContent = dataFormatada;
+    }
+}
+
+// Inicia o relógio e atualiza a cada 1 segundo (1000 ms)
+setInterval(atualizarRelogio, 1000);
+atualizarRelogio();
+
+// ---------------------------------------------------------
+// 5. Comunicação em Tempo Real com a Estação Meteorológica
+// ---------------------------------------------------------
 const estacaoRef = ref(database, 'estacao');
 
-// 5. Escutando o banco em Tempo Real
 onValue(estacaoRef, (snapshot) => {
     const dados = snapshot.val();
     
     if (dados) {
-        console.log("Dados recebidos da placa:", dados); // Mostra no console do navegador
+        console.log("Dados meteorológicos recebidos:", dados);
 
-        // Atualiza o HTML (formatando com casas decimais para ficar bonito)
-        // O "if" garante que o site não quebre se algum ID não existir no HTML
-        if (document.getElementById("temperatura")) {
+        // Preenche cada card validando se o dado existe no Firebase e se o card existe no HTML
+        if (document.getElementById("temperatura") && dados.temperatura !== undefined) {
             document.getElementById("temperatura").textContent = dados.temperatura.toFixed(1);
         }
-        if (document.getElementById("umidade")) {
-            document.getElementById("umidade").textContent = dados.umidade.toFixed(1);
-        }
-        if (document.getElementById("pressao")) {
-            document.getElementById("pressao").textContent = dados.pressao.toFixed(1);
-        }
-        if (document.getElementById("co2")) {
-            document.getElementById("co2").textContent = dados.co2.toFixed(0);
-        }
-        if (document.getElementById("nh3")) {
-            document.getElementById("nh3").textContent = dados.nh3.toFixed(2);
-        }
-        if (document.getElementById("qualidadeAr")) {
-            document.getElementById("qualidadeAr").textContent = dados.qualidadeAr;
-        }
-    }
-});
-
-// 6. Seu relógio (mantido intacto)
-function atualizarRelogio() {
-    const agora = new Date();
-
-    if(document.getElementById("hora")) {
-        document.getElementById("hora").textContent = agora.toLocaleTimeString("pt-BR", {
-            timeZone: "America/Manaus",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit"
-        });
-    }
-
-    if(document.getElementById("data")) {
-        document.getElementById("data").textContent = agora.toLocaleDateString("pt-BR", {
-            timeZone: "America/Manaus",
-            weekday: "long",
-            day: "2-digit",
-            month: "long",
-            year: "numeric"
-        });
-    }
-}
-
-atualizarRelogio();
-setInterval(atualizarRelogio, 1000);
+        
+        if (document.getElementById("umidade") && dados.umidade !== undefined) {
+            document.getElementById("umidade").textContent = dados.umidade.
