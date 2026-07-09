@@ -55,4 +55,33 @@ onValue(estacaoRef, (snapshot) => {
         }
         
         if (document.getElementById("umidade") && dados.umidade !== undefined) {
-            document.getElementById("umidade").textContent = dados.umidade.
+            document.getElementById("umidade").textContent = dados.umidade.toFixed(1);
+        }
+        
+        if (document.getElementById("pressao") && dados.pressao !== undefined) {
+            document.getElementById("pressao").textContent = dados.pressao.toFixed(1);
+        }
+        
+        if (document.getElementById("co2") && dados.co2 !== undefined) {
+            // CO2 geralmente é um número inteiro, usamos toFixed(0)
+            document.getElementById("co2").textContent = dados.co2.toFixed(0); 
+        }
+        
+        if (document.getElementById("nh3") && dados.nh3 !== undefined) {
+            document.getElementById("nh3").textContent = dados.nh3.toFixed(2);
+        }
+        
+        // Novos Sensores: Anemômetro e Pluviômetro
+        if (document.getElementById("vento") && dados.vento !== undefined) {
+            document.getElementById("vento").textContent = dados.vento.toFixed(1);
+        }
+        
+        if (document.getElementById("chuva") && dados.chuva !== undefined) {
+            document.getElementById("chuva").textContent = dados.chuva.toFixed(1);
+        }
+        
+        if (document.getElementById("qualidadeAr") && dados.qualidadeAr !== undefined) {
+            document.getElementById("qualidadeAr").textContent = dados.qualidadeAr;
+        }
+    }
+});
