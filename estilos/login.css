@@ -123,3 +123,43 @@ body {
         right: 15px;
     }
 }
+
+.esqueci-senha-box {
+    margin-top: 15px;
+    font-size: 0.85rem;
+}
+
+.esqueci-senha-box a {
+    color: #9ba6b5;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.esqueci-senha-box a:hover {
+    color: #00E5FF; /* Fica ciano ao passar o rato */
+    text-decoration: underline;
+}
+
+/* Configuração da caixa de senha para segurar o ícone */
+.senha-group {
+    position: relative;
+}
+
+/* Estilo do olhinho */
+.olho-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0.6;
+    user-select: none;
+    transition: 0.2s;
+    z-index: 10; /* GARANTE QUE O OLHO FICA POR CIMA */
+}
+
+/* Evita que a senha digitada encoste no olho */
+.senha-group input {
+    padding-right: 40px; 
+}
