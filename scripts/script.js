@@ -34,7 +34,6 @@ onValue(estacaoRef, (snapshot) => {
         
         // Textos
         document.getElementById('qualidade').innerText = dados.qualidadeAr;
-        document.getElementById('datahora').innerText = "Última atualização: " + dados.datahora;
 
         console.log("Dados atualizados com sucesso!");
     } else {
@@ -43,3 +42,25 @@ onValue(estacaoRef, (snapshot) => {
 }, (error) => {
     console.error("Erro ao ler os dados:", error);
 });
+
+// ---------------------------------------------------------
+// RELÓGIO EM TEMPO REAL (Painel)
+// ---------------------------------------------------------
+const relogioElemento = document.getElementById('relogio-tempo-real');
+
+function atualizarRelogio() {
+    const agora = new Date();
+    
+    // O padStart(2, '0') garante que os números fiquem com 2 casas (ex: 09 em vez de 9)
+    const horas = String(agora.getHours()).padStart(2, '0');
+    const minutos = String(agora.getMinutes()).padStart(2, '0');
+    const segundos = String(agora.getSeconds()).padStart(2, '0');
+    
+    relogioElemento.innerText = `${horas}:${minutos}:${segundos}`;
+}
+
+// Executa a função imediatamente ao carregar a página
+atualizarRelogio();
+
+// Atualiza o relógio a cada 1000 milissegundos (1 segundo)
+setInterval(atualizarRelogio, 1000);

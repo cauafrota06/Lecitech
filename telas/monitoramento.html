@@ -19,7 +19,7 @@
         </div>
         <nav class="navegacao">
             <a href="#" class="nav-link ativo">Monitoramento</a>
-            <a href="#" class="nav-link">Dashboard (Gráficos)</a>
+            <a href="dashboard.html" class="nav-link">Dashboard (Gráficos)</a>
             <a href="projeto.html" class="nav-link">Sobre o Projeto</a>
         </nav>
         <div class="status-estacao">
@@ -30,8 +30,15 @@
     <main class="container">
         
         <div class="cabecalho-dados">
-            <h2>Dados em Tempo Real</h2>
-            <p id="datahora">Atualizando...</p>
+            <div class="textos-cabecalho">
+                <h2>Dados em Tempo Real</h2>
+                <p>Monitoramento contínuo dos sensores</p>
+            </div>
+            
+            <div class="relogio-container">
+                <i class="fa-regular fa-clock"></i>
+                <span id="relogio-tempo-real">00:00:00</span>
+            </div>
         </div>
 
         <div class="grid-sensores">

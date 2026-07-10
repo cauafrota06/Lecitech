@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecitech - Dashboard e Gráficos</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../estilos/dashboard.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo-container">
+            <img src="lecita.png" alt="Logo Escola Lecita" class="logo-img">
+            <h1 class="logo-texto">LECITECH</h1>
+        </div>
+        <nav class="navegacao">
+            <a href="monitoramento.html" class="nav-link">Monitoramento</a>
+            <a href="#" class="nav-link ativo">Dashboard (Gráficos)</a>
+            <a href="projeto.html" class="nav-link">Sobre o Projeto</a>
+        </nav>
+        <div class="status-estacao">
+            <span class="ponto-verde"></span> Online
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <div class="cabecalho-dados">
+            <div class="textos-cabecalho">
+                <h2 id="titulo-secao">Selecione um Sensor para Análise</h2>
+                <p id="subtitulo-secao">Escolha uma variável climática para gerar o relatório gráfico.</p>
+            </div>
+        </div>
+
+        <div id="menu-graficos" class="grid-sensores">
+            
+            <div class="card-clicavel" data-sensor="temperatura" data-cor="#FF4B4B" data-icone="fa-temperature-half" data-nome="Temperatura (°C)">
+                <div class="card-icone" style="color: #FF4B4B;"><i class="fa-solid fa-temperature-half"></i></div>
+                <h3>Gráfico de Temperatura</h3>
+                <p>Relatório Histórico</p>
+            </div>
+
+            <div class="card-clicavel" data-sensor="umidade" data-cor="#00E5FF" data-icone="fa-droplet" data-nome="Umidade do Ar (%)">
+                <div class="card-icone" style="color: #00E5FF;"><i class="fa-solid fa-droplet"></i></div>
+                <h3>Gráfico de Umidade</h3>
+                <p>Análise Diária</p>
+            </div>
+
+            <div class="card-clicavel" data-sensor="chuva" data-cor="#4FC3F7" data-icone="fa-cloud-showers-heavy" data-nome="Precipitação (mm)">
+                <div class="card-icone" style="color: #4FC3F7;"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
+                <h3>Gráfico de Chuva</h3>
+                <p>Volume Acumulado</p>
+            </div>
+
+            <div class="card-clicavel" data-sensor="vento" data-cor="#B0BEC5" data-icone="fa-wind" data-nome="Velocidade do Vento (km/h)">
+                <div class="card-icone" style="color: #B0BEC5;"><i class="fa-solid fa-wind"></i></div>
+                <h3>Gráfico de Vento</h3>
+                <p>Rajadas e Constância</p>
+            </div>
+
+        </div>
+
+        <div id="area-grafico" class="grafico-card" style="display: none;">
+            <div class="grafico-header">
+                <button id="btn-voltar" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i> Voltar aos Sensores</button>
+                <div class="titulo-grafico-container">
+                    <h3 id="nome-grafico-ativo"><i class="fa-solid fa-chart-line"></i> Carregando...</h3>
+                    <span id="valor-atual-destaque" class="valor-destaque">--</span>
+                </div>
+            </div>
+            <div class="canvas-container">
+                <canvas id="graficoCanvas"></canvas>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="../scripts/dashboard.js"></script>
+</body>
+</html>
