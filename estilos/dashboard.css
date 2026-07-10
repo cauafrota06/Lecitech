@@ -22,83 +22,76 @@ body { background-color: #1a2430; color: #ffffff; }
 .textos-cabecalho p { font-size: 0.9rem; color: #9ba6b5; margin-top: 5px; }
 
 /* ================= TELA 1: MENU DE ESCOLHA ================= */
-.grid-sensores {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.card-clicavel {
-    background-color: #233142;
-    border-radius: 12px;
-    padding: 30px 20px;
-    text-align: center;
-    border: 1px solid #3c4c60;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.card-clicavel:hover {
-    transform: translateY(-5px);
-    border-color: #00E5FF;
-    box-shadow: 0 8px 25px rgba(0, 229, 255, 0.15);
-}
-
+.grid-sensores { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.card-clicavel { background-color: #233142; border-radius: 12px; padding: 30px 20px; text-align: center; border: 1px solid #3c4c60; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
+.card-clicavel:hover { transform: translateY(-5px); border-color: #00E5FF; box-shadow: 0 8px 25px rgba(0, 229, 255, 0.15); }
 .card-icone { font-size: 2.5rem; margin-bottom: 15px; }
 .card-clicavel h3 { font-size: 1.1rem; color: #ffffff; margin-bottom: 5px; }
 .card-clicavel p { font-size: 0.85rem; color: #9ba6b5; }
 
 /* ================= TELA 2: ÁREA DO GRÁFICO ================= */
-.grafico-card {
-    background-color: #233142;
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-    border: 1px solid #3c4c60;
-    animation: fadeIn 0.4s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.grafico-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #3c4c60;
-    padding-bottom: 15px;
-}
-
-.btn-voltar {
-    background: transparent;
-    color: #9ba6b5;
-    border: 1px solid #3c4c60;
-    padding: 8px 15px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: 600;
-}
-
-.btn-voltar:hover {
-    color: #ffffff;
-    border-color: #00E5FF;
-    background-color: rgba(0, 229, 255, 0.1);
-}
-
+.grafico-card { background-color: #233142; border-radius: 12px; padding: 25px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); border: 1px solid #3c4c60; animation: fadeIn 0.4s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.grafico-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #3c4c60; padding-bottom: 15px; }
+.btn-voltar { background: transparent; color: #9ba6b5; border: 1px solid #3c4c60; padding: 8px 15px; border-radius: 8px; font-size: 0.9rem; cursor: pointer; transition: 0.3s; font-weight: 600; }
+.btn-voltar:hover { color: #ffffff; border-color: #00E5FF; background-color: rgba(0, 229, 255, 0.1); }
 .titulo-grafico-container { text-align: right; }
 .titulo-grafico-container h3 { font-size: 1.1rem; color: #ffffff; font-weight: 600; margin-bottom: 5px;}
 .valor-destaque { font-size: 1.4rem; font-weight: 700; }
+.canvas-container { position: relative; height: 50vh; width: 100%; }
 
-.canvas-container {
-    position: relative;
-    height: 50vh;
+/* ================= NOVA SEÇÃO: TABELA DE RELATÓRIOS CONSOLIDADOS ================= */
+.tabela-container {
+    background-color: #233142;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid #3c4c60;
+    overflow-x: auto; /* Garante que funcione bem no celular */
+}
+
+.tabela-relatorios {
     width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabela-relatorios th, 
+.tabela-relatorios td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #3c4c60;
+}
+
+.tabela-relatorios th {
+    color: #9ba6b5;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background-color: #1a2430;
+}
+
+.tabela-relatorios tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela-relatorios td {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.tabela-relatorios tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.temp-max-celula {
+    color: #FF4B4B;
+    font-weight: 700;
+}
+
+.temp-min-celula {
+    color: #00E5FF;
+    font-weight: 700;
 }
 
 @media (max-width: 768px) {

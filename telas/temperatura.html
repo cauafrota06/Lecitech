@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecitech - Gráfico de Temperatura</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../estilos/temperatura.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo-container">
+            <img src="lecita.png" alt="Logo Escola Lecita" class="logo-img">
+            <h1 class="logo-texto">LECITECH</h1>
+        </div>
+        <nav class="navegacao">
+            <a href="monitoramento.html" class="nav-link">Monitoramento</a>
+            <a href="dashboard.html" class="nav-link ativo">Dashboard (Gráficos)</a>
+            <a href="projeto.html" class="nav-link">Sobre o Projeto</a>
+        </nav>
+        <div class="status-estacao">
+            <span class="ponto-verde"></span> Online
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <div class="cabecalho-dados">
+            <div class="textos-cabecalho">
+                <h2>Análise Histórica: Temperatura</h2>
+                <p>Variações climáticas registradas em tempo real na região de Manaus.</p>
+            </div>
+        </div>
+
+        <div class="grafico-card">
+            <div class="grafico-header">
+                <a href="dashboard.html" class="btn-voltar"><i class="fa-solid fa-arrow-left"></i> Voltar aos Sensores</a>
+                <div class="titulo-grafico-container">
+                    <h3><i class="fa-solid fa-temperature-half" style="color: #FF4B4B;"></i> Variação de Temperatura (°C)</h3>
+                    <span id="valor-atual-destaque" class="valor-destaque">-- °C</span>
+                </div>
+            </div>
+            <div class="canvas-container">
+                <canvas id="graficoCanvas"></canvas>
+            </div>
+        </div>
+
+        <div class="relatorios-secao">
+            <div class="cabecalho-dados">
+                <div class="textos-cabecalho">
+                    <h2>Histórico de Recordes Diários</h2>
+                    <p>Resumo de temperaturas extremas arquivadas automaticamente na virada de cada dia (Meia-Noite).</p>
+                </div>
+            </div>
+            
+            <div class="tabela-container">
+                <table class="tabela-relatorios">
+                    <thead>
+                        <tr>
+                            <th><i class="fa-solid fa-calendar-day"></i> Data do Registro</th>
+                            <th><i class="fa-solid fa-temperature-arrow-up" style="color: #FF4B4B;"></i> Temp. Máxima</th>
+                            <th><i class="fa-solid fa-temperature-arrow-down" style="color: #00E5FF;"></i> Temp. Mínima</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpo-tabela-relatorios">
+                        <tr>
+                            <td colspan="3" style="text-align: center; color: #9ba6b5; padding: 30px;">
+                                <i class="fa-solid fa-spinner fa-spin"></i> Buscando relatórios arquivados...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="../scripts/temperatura.js"></script>
+</body>
+</html>
