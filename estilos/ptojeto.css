@@ -1,0 +1,166 @@
+/* ================= RESET E ESTILO GLOBAL ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #1a2430;
+    color: #ffffff;
+    overflow-x: hidden; /* Evita barra de rolagem horizontal nas animações */
+}
+
+/* ================= CABEÇALHO (Cópia exata do Monitoramento) ================= */
+.header {
+    background-color: #233142;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+.logo-container { display: flex; align-items: center; gap: 15px; }
+.logo-img { width: 50px; height: auto; }
+.logo-texto { font-size: 1.8rem; font-weight: 700; color: #00E5FF; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 229, 255, 0.3); }
+.navegacao { display: flex; gap: 30px; }
+.nav-link { text-decoration: none; color: #9ba6b5; font-weight: 600; font-size: 0.95rem; padding-bottom: 5px; transition: 0.3s; }
+.nav-link:hover { color: #00E5FF; }
+.nav-link.ativo { color: #00E5FF; border-bottom: 2px solid #00E5FF; }
+.status-estacao { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.9rem; color: #4CAF50; }
+.ponto-verde { width: 10px; height: 10px; background-color: #4CAF50; border-radius: 50%; box-shadow: 0 0 8px rgba(76, 175, 80, 0.6); animation: piscar 1.5s infinite; }
+@keyframes piscar { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+/* ================= CONTEÚDO DA PÁGINA SOBRE ================= */
+.container {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* --- Hero Section --- */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #233142 0%, #1a2430 100%);
+    border: 1px solid #3c4c60;
+    border-radius: 16px;
+    padding: 50px;
+    margin-bottom: 50px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.hero-text {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.titulo-destaque {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.texto-ciano {
+    color: #00E5FF;
+    text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+}
+
+.hero-text p {
+    color: #9ba6b5;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.hero-icon {
+    font-size: 10rem;
+    color: #3c4c60;
+    opacity: 0.5;
+    transform: rotate(15deg);
+}
+
+/* --- Grid de Informações --- */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.info-card {
+    background-color: #233142;
+    border: 1px solid #3c4c60;
+    border-radius: 12px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.info-card:hover {
+    transform: translateY(-10px);
+    border-color: #00E5FF;
+    box-shadow: 0 15px 35px rgba(0, 229, 255, 0.1);
+}
+
+/* Brilho interativo que segue o mouse (Lógica no JS) */
+.info-card::before {
+    content: '';
+    position: absolute;
+    top: var(--y, 50%);
+    left: var(--x, 50%);
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.info-card:hover::before {
+    opacity: 1;
+}
+
+.icon-box {
+    font-size: 2.5rem;
+    color: #00E5FF; /* Padrão Ciano */
+    margin-bottom: 20px;
+}
+
+.icon-box.destaque-amarelo { color: #FFD600; }
+.icon-box.destaque-vermelho { color: #FF4B4B; }
+
+.info-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.info-card p {
+    font-size: 0.95rem;
+    color: #9ba6b5;
+    line-height: 1.6;
+}
+
+/* ================= CLASSES DE ANIMAÇÃO (Controladas pelo JS) ================= */
+.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================= RESPONSIVIDADE ================= */
+@media (max-width: 900px) {
+    .hero { flex-direction: column; text-align: center; padding: 30px; }
+    .hero-text { padding-right: 0; margin-bottom: 30px; }
+    .hero-icon { display: none; }
+    .titulo-destaque { font-size: 2rem; }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecitech - Sobre o Projeto</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../estilos/projeto.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo-container">
+            <img src="lecita.png" alt="Logo Escola Lecita" class="logo-img">
+            <h1 class="logo-texto">LECITECH</h1>
+        </div>
+        <nav class="navegacao">
+            <a href="monitoramento.html" class="nav-link">Monitoramento</a>
+            <a href="#" class="nav-link">Dashboard (Gráficos)</a>
+            <a href="#" class="nav-link ativo">Sobre o Projeto</a>
+        </nav>
+        <div class="status-estacao">
+            <span class="ponto-verde"></span> Online
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="hero hidden">
+            <div class="hero-text">
+                <h2 class="titulo-destaque">Tecnologia e Educação em <span class="texto-ciano">Sincronia</span></h2>
+                <p>
+                    A Estação Meteorológica Lecitech é um sistema inteligente de monitoramento climático e ambiental. 
+                    Combinando hardware de baixo custo e painéis em tempo real, o projeto democratiza o acesso a dados atmosféricos precisos, 
+                    permitindo análises sobre temperatura, qualidade do ar e variações climáticas locais.
+                </p>
+            </div>
+            <div class="hero-icon">
+                <i class="fa-solid fa-satellite-dish"></i>
+            </div>
+        </section>
+
+        <section class="info-grid">
+            
+            <div class="info-card hidden" style="transition-delay: 100ms;">
+                <div class="icon-box"><i class="fa-solid fa-microchip"></i></div>
+                <h3>Hardware e IoT</h3>
+                <p>
+                    O núcleo da estação opera com microcontroladores como Arduino e placas da família ESP32, integrados a uma rede de sensores de alta precisão. 
+                    Os dados coletados no ambiente são processados e enviados via Wi-Fi para o nosso banco de dados em nuvem, garantindo leitura instantânea em qualquer dispositivo.
+                </p>
+            </div>
+
+            <div class="info-card hidden" style="transition-delay: 200ms;">
+                <div class="icon-box destaque-amarelo"><i class="fa-solid fa-flask-vial"></i></div>
+                <h3>Mais Ciência na Escola</h3>
+                <p>
+                    Este sistema nasce como fruto do programa <strong>Mais Ciência na Escola Amazonas</strong>. 
+                    A iniciativa tem o nobre propósito de revolucionar a educação pública, implementando laboratórios da cultura maker e mentoria científica em dezenas de escolas estaduais, 
+                    incentivando jovens a transformarem curiosidade em inovação tecnológica aplicada.
+                </p>
+            </div>
+
+            <div class="info-card hidden" style="transition-delay: 300ms;">
+                <div class="icon-box destaque-vermelho"><i class="fa-solid fa-earth-americas"></i></div>
+                <h3>Impacto Ambiental</h3>
+                <p>
+                    Além de seu caráter educativo, a Lecitech fornece um panorama contínuo da qualidade do ar (monitorando gases como CO2 e NH3) e níveis de precipitação. 
+                    Essas informações são vitais para a conscientização ambiental da comunidade escolar e para o planejamento sustentável da região.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="../scripts/projeto.js"></script>
+</body>
+</html>
