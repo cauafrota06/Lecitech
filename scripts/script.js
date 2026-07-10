@@ -1,87 +1,45 @@
-// 1. Importações do Firebase (SDK Modular)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-// 2. Configuração do seu Banco de Dados (Firebase Lecitech)
+// Suas credenciais do Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyD507yI1k5nIKAHit-xNEglMfbvyU-mwjo",
     databaseURL: "https://lecitech-c0846-default-rtdb.firebaseio.com/",
     projectId: "lecitech-c0846"
 };
 
-// 3. Inicialização do Firebase
+// Inicializa o Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-// ---------------------------------------------------------
-// 4. Função do Relógio Local (Data e Hora)
-// ---------------------------------------------------------
-function atualizarRelogio() {
-    const agora = new Date();
-    
-    // Formata a data (ex: quinta-feira, 9 de julho de 2026)
-    const opcoesData = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const dataFormatada = agora.toLocaleDateString('pt-BR', opcoesData);
-    
-    // Formata a hora (ex: 10:52:35)
-    const horaFormatada = agora.toLocaleTimeString('pt-BR');
-
-    if (document.getElementById('hora')) {
-        document.getElementById('hora').textContent = horaFormatada;
-    }
-    if (document.getElementById('data')) {
-        document.getElementById('data').textContent = dataFormatada;
-    }
-}
-
-// Inicia o relógio e atualiza a cada 1 segundo (1000 ms)
-setInterval(atualizarRelogio, 1000);
-atualizarRelogio();
-
-// ---------------------------------------------------------
-// 5. Comunicação em Tempo Real com a Estação Meteorológica
-// ---------------------------------------------------------
+// Cria uma referência para a pasta 'estacao' no banco de dados
 const estacaoRef = ref(database, 'estacao');
 
+// O 'onValue' fica escutando o banco de dados em tempo real
 onValue(estacaoRef, (snapshot) => {
     const dados = snapshot.val();
-    
-    if (dados) {
-        console.log("Dados meteorológicos recebidos:", dados);
 
-        // Preenche cada card validando se o dado existe no Firebase e se o card existe no HTML
-        if (document.getElementById("temperatura") && dados.temperatura !== undefined) {
-            document.getElementById("temperatura").textContent = dados.temperatura.toFixed(1);
-        }
+    if (dados) {
+        // Pega os dados do banco e injeta nos IDs corretos do HTML
+        // Usamos o .toFixed(1) para deixar apenas 1 casa decimal e ficar mais bonito
+        document.getElementById('temp').innerText = parseFloat(dados.temperatura).toFixed(1);
+        document.getElementById('umid').innerText = parseFloat(dados.umidade).toFixed(1);
+        document.getElementById('chuva').innerText = parseFloat(dados.chuva).toFixed(1);
+        document.getElementById('vento').innerText = parseFloat(dados.vento).toFixed(1);
+        document.getElementById('pressao').innerText = parseFloat(dados.pressao).toFixed(1);
         
-        if (document.getElementById("umidade") && dados.umidade !== undefined) {
-            document.getElementById("umidade").textContent = dados.umidade.toFixed(1);
-        }
+        // CO2 e NH3 geralmente são números inteiros
+        document.getElementById('co2').innerText = parseInt(dados.co2);
+        document.getElementById('nh3').innerText = parseInt(dados.nh3);
         
-        if (document.getElementById("pressao") && dados.pressao !== undefined) {
-            document.getElementById("pressao").textContent = dados.pressao.toFixed(1);
-        }
-        
-        if (document.getElementById("co2") && dados.co2 !== undefined) {
-            // CO2 geralmente é um número inteiro, usamos toFixed(0)
-            document.getElementById("co2").textContent = dados.co2.toFixed(0); 
-        }
-        
-        if (document.getElementById("nh3") && dados.nh3 !== undefined) {
-            document.getElementById("nh3").textContent = dados.nh3.toFixed(2);
-        }
-        
-        // Novos Sensores: Anemômetro e Pluviômetro
-        if (document.getElementById("vento") && dados.vento !== undefined) {
-            document.getElementById("vento").textContent = dados.vento.toFixed(1);
-        }
-        
-        if (document.getElementById("chuva") && dados.chuva !== undefined) {
-            document.getElementById("chuva").textContent = dados.chuva.toFixed(1);
-        }
-        
-        if (document.getElementById("qualidadeAr") && dados.qualidadeAr !== undefined) {
-            document.getElementById("qualidadeAr").textContent = dados.qualidadeAr;
-        }
+        // Textos
+        document.getElementById('qualidade').innerText = dados.qualidadeAr;
+        document.getElementById('datahora').innerText = "Última atualização: " + dados.datahora;
+
+        console.log("Dados atualizados com sucesso!");
+    } else {
+        console.log("Nenhum dado encontrado no nó 'estacao'.");
     }
+}, (error) => {
+    console.error("Erro ao ler os dados:", error);
 });
