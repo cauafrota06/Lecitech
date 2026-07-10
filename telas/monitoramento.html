@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecitech - Monitoramento</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../estilos/monitoramento.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo-container">
+            <img src="lecita.png" alt="Logo Escola Lecita" class="logo-img">
+            <h1 class="logo-texto">LECITECH</h1>
+        </div>
+        <nav class="navegacao">
+            <a href="#" class="nav-link ativo">Monitoramento</a>
+            <a href="#" class="nav-link">Dashboard (Gráficos)</a>
+            <a href="#" class="nav-link">Sobre o Projeto</a>
+        </nav>
+        <div class="status-estacao">
+            <span class="ponto-verde"></span> Online
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <div class="cabecalho-dados">
+            <h2>Dados em Tempo Real</h2>
+            <p id="datahora">Atualizando...</p>
+        </div>
+
+        <div class="grid-sensores">
+            <div class="card">
+                <div class="card-icone" style="color: #FF4B4B;"><i class="fa-solid fa-temperature-half"></i></div>
+                <div class="card-info">
+                    <h3>Temperatura</h3>
+                    <div class="valor"><span id="temp">--</span> °C</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icone" style="color: #00E5FF;"><i class="fa-solid fa-droplet"></i></div>
+                <div class="card-info">
+                    <h3>Umidade do Ar</h3>
+                    <div class="valor"><span id="umid">--</span> %</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icone" style="color: #4FC3F7;"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
+                <div class="card-info">
+                    <h3>Precipitação (Chuva)</h3>
+                    <div class="valor"><span id="chuva">--</span> mm</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icone" style="color: #B0BEC5;"><i class="fa-solid fa-wind"></i></div>
+                <div class="card-info">
+                    <h3>Velocidade do Vento</h3>
+                    <div class="valor"><span id="vento">--</span> km/h</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icone" style="color: #9575CD;"><i class="fa-solid fa-gauge-high"></i></div>
+                <div class="card-info">
+                    <h3>Pressão Atmosférica</h3>
+                    <div class="valor"><span id="pressao">--</span> hPa</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icone" style="color: #A5D6A7;"><i class="fa-solid fa-smog"></i></div>
+                <div class="card-info">
+                    <h3>Gás Carbônico (CO2)</h3>
+                    <div class="valor"><span id="co2">--</span> ppm</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icone" style="color: #FFB300;"><i class="fa-solid fa-flask"></i></div>
+                <div class="card-info">
+                    <h3>Amônia (NH3)</h3>
+                    <div class="valor"><span id="nh3">--</span> ppm</div>
+                </div>
+            </div>
+
+            <div class="card destaque-amarelo">
+                <div class="card-icone"><i class="fa-solid fa-leaf"></i></div>
+                <div class="card-info">
+                    <h3>Qualidade do Ar</h3>
+                    <div class="valor" id="qualidade">Calculando...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="../scripts/script.js"></script>
+</body>
+</html>

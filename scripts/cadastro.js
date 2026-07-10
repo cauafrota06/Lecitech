@@ -34,7 +34,7 @@ formCadastro.addEventListener("submit", (e) => {
             .then(() => {
                 alert("Conta criada e registrada no banco de dados com sucesso!");
                 // Redireciona para o painel principal
-                window.location.href = "index.html"; 
+                window.location.href = "monitoramento.html"; 
             })
             .catch((dbError) => {
                 console.error("Erro no DB:", dbError);

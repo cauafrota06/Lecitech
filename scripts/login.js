@@ -22,7 +22,7 @@ formLogin.addEventListener("submit", (e) => {
         .then((userCredential) => {
             console.log("Acesso autorizado para:", userCredential.user.email);
             // Redireciona para o painel de sensores
-            window.location.href = "index.html";
+            window.location.href = "monitoramento.html";
         })
         .catch((error) => {
             // Tratamento de erros amigável para o utilizador
